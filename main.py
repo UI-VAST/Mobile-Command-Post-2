@@ -56,6 +56,9 @@ while 1:
             logger.log("Received!")
             status = (-1, 0, 0, 0, 0, 0)
             retry = 0
+            rb.ring_alert = False
+            time.sleep(1)
+            rb.ring_alert = True
     counter += 1
     time.sleep(5)  # Sleep for 1 second
 
