@@ -59,6 +59,9 @@ while 1:
             rb.ring_alert = False
             time.sleep(1)
             rb.ring_alert = True
-    counter += 1
+
+        rb.ring_alert = False
+        time.sleep(1)
+        rb.ring_alert = True
     time.sleep(5)  # Sleep for 1 second
 
