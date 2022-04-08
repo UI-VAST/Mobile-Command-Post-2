@@ -43,18 +43,16 @@ while 1:
             # try a satellite Short Burst Data transfer
             status = rb.satellite_transfer()
             logger.log("Talking to satellite... ", str(status))  # loop as needed
-            data = rb.text_in
 
-        if status[0] > 8 and counter % 10 == 0:
+        if status[0] > 8:
             status = rb.satellite_transfer()
             logger.log(str(retry), str(status))
-            data = rb.text_in
             logger.log("Signal Quality: ", str(rb.signal_quality))
-            logger.log("Getting Text... ", data)
             retry += 1
 
         if 8 >= status[0] > -1:
-            # data = rb.text_in
+            data = rb.text_in
+            logger.log("Getting Text... ", data)
             logger.log("Received!")
             status = (-1, 0, 0, 0, 0, 0)
             retry = 0
