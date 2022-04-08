@@ -38,28 +38,26 @@ while 1:
     print(rb.signal_quality)
     print(rb.ring_alert)
     print(rb.ring_indication)
-    if rb.ring_indication[1] == '001':
-        if status[0] == -1:
-            # try a satellite Short Burst Data transfer
-            status = rb.satellite_transfer()
-            logger.log("Talking to satellite... ", str(status))  # loop as needed
+    # if rb.ring_indication[1] == '001':
+    if status[0] == -1 and counter % 180 == 0:
+        # try a satellite Short Burst Data transfer
+        status = rb.satellite_transfer()
+        logger.log("Talking to satellite... ", str(status))  # loop as needed
 
-        if status[0] > 8:
-            status = rb.satellite_transfer()
-            logger.log(str(retry), str(status))
-            logger.log("Signal Quality: ", str(rb.signal_quality))
-            retry += 1
+    if status[0] > 8 and counter % 10 == 0:
+        status = rb.satellite_transfer()
+        logger.log(str(retry), str(status))
+        logger.log("Signal Quality: ", str(rb.signal_quality))
+        retry += 1
 
-        if 8 >= status[0] > -1:
-            data = rb.text_in
-            logger.log("Getting Text... ", data)
-            logger.log("Received!")
-            status = (-1, 0, 0, 0, 0, 0)
-            retry = 0
-            rb.ring_alert = False
-            time.sleep(1)
-            rb.ring_alert = True
+    if 8 >= status[0] > -1:
+        data = rb.text_in
+        logger.log("Getting Text... ", data)
+        logger.log("Received!")
+        status = (-1, 0, 0, 0, 0, 0)
+        retry = 0
+        counter = 0
+    counter += 1
 
-        rb.ring_alert = False
     time.sleep(5)  # Sleep for 1 second
 
