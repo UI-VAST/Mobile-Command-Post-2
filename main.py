@@ -29,7 +29,7 @@ logger.log("System Time: ", str(rb.system_time))
 logger.log("Signal Quality: ", str(rb.signal_quality))
 
 time.sleep(8)
-status = (-1)
+status = (-1, 0, 0)
 retry = 0
 counter = 0
 data = ()
