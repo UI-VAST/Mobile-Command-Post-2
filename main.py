@@ -34,6 +34,7 @@ retry = 0
 counter = 0
 while 1:
     # set the text
+    print(rb.ring_alert)
     print(rb.ring_indication)
     # if counter % 10 == 0 and status[0] == -1:
     #     # try a satellite Short Burst Data transfer
