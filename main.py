@@ -34,6 +34,7 @@ retry = 0
 counter = 0
 while 1:
     # set the text
+    print(rb.signal_quality)
     print(rb.ring_alert)
     print(rb.ring_indication)
     # if counter % 10 == 0 and status[0] == -1:
@@ -54,5 +55,5 @@ while 1:
     #     status = (-1, 0, 0, 0, 0, 0)
     #     retry = 0
 
-    time.sleep(1)  # Sleep for 1 second
+    time.sleep(5)  # Sleep for 1 second
 
