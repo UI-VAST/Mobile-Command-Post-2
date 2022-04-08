@@ -36,8 +36,6 @@ data = ()
 while 1:
     # set the text
     print(rb.signal_quality)
-    print(rb.ring_alert)
-    print(rb.ring_indication)
     # if rb.ring_indication[1] == '001':
     if status[0] == -1 and counter % 180 == 0:
         # try a satellite Short Burst Data transfer
